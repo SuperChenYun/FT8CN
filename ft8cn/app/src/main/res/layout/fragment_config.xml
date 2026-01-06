@@ -596,22 +596,23 @@
                             app:layout_constraintTop_toBottomOf="@+id/cloudlogServerAddressEdit" />
 
                         <EditText
-                            android:id="@+id/cloudlogServerApiKeyEdit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:background="@drawable/editor_style"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:minHeight="15dp"
-                            android:textColor="@color/text_view_color"
+                                android:id="@+id/cloudlogServerApiKeyEdit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/editor_style"
+                                android:ems="10"
+                                android:inputType="text"
+                                android:minHeight="15dp"
+                                android:textColor="@color/text_view_color"
 
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="@+id/cloudlogServerAddressEdit"
-                            app:layout_constraintStart_toStartOf="@+id/cloudlogServerAddressEdit"
-                            app:layout_constraintTop_toBottomOf="@+id/cloudlogServerAddressEdit"
-                            tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"
-                            android:importantForAutofill="no" />
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="@+id/cloudlogServerAddressEdit"
+                                app:layout_constraintStart_toStartOf="@+id/cloudlogServerAddressEdit"
+                                app:layout_constraintTop_toBottomOf="@+id/cloudlogServerAddressEdit"
+                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                                android:importantForAutofill="no" android:layout_marginBottom="3dp"
+                                app:layout_constraintBottom_toTopOf="@+id/cloudlogStationIdEdit"/>
 
                         <TextView
                             android:id="@+id/cloudlogStationIdTextView"
@@ -769,8 +770,272 @@
                             tools:ignore="TouchTargetSizeCheck" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:id="@+id/udpServerLayout"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_margin="2dp"-->
+<!--                            android:background="@drawable/editor_layout_style"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintHorizontal_bias="0.333"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toBottomOf="@+id/qrzLayout">-->
+
+<!--                        <TextView-->
+<!--                                android:id="@+id/udpServerSettingsTextView"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="@string/udp_server_settings"-->
+<!--                                android:textAlignment="textEnd"-->
+<!--                                android:textColor="@color/text_view_color"-->
+<!--                                android:textSize="14sp"-->
+<!--                                app:layout_constraintBottom_toTopOf="@+id/testUdpServerButton"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--&lt;!&ndash;                        <EditText&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:id="@+id/udpServerAddressTextEdit"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_marginStart="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_marginTop="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_marginEnd="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:background="@drawable/editor_style"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:ems="10"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                android:importantForAutofill="no"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:inputType="text|textUri"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:minHeight="14dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:textColor="@color/text_view_color"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:textSize="18sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                app:layout_constraintEnd_toStartOf="@+id/udpServerSettingsImageButton"&ndash;&gt;-->
+<!--&lt;!&ndash;                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"&ndash;&gt;-->
+<!--&lt;!&ndash;                                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck" />&ndash;&gt;-->
+
+<!--                        <TextView-->
+<!--                                android:id="@+id/cloudlogServerAddressTextView"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="12dp"-->
+<!--                                android:text="@string/udp_server_ip"-->
+<!--                                android:textAlignment="textEnd"-->
+<!--                                android:textColor="@color/text_view_color"-->
+<!--                                android:textSize="14sp"-->
+<!--                                app:layout_constraintBottom_toBottomOf="@+id/cloudlogServerAddressEdit"-->
+<!--                                app:layout_constraintStart_toEndOf="@+id/cloudlogSettingsTextView"-->
+<!--                                app:layout_constraintTop_toTopOf="@+id/cloudlogServerAddressEdit" />-->
+
+<!--                        <EditText-->
+<!--                                android:id="@+id/udpServerAddressTextEdit"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="8dp"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:layout_marginEnd="8dp"-->
+<!--                                android:background="@drawable/editor_style"-->
+<!--                                android:ems="10"-->
+
+<!--                                android:inputType="text|textUri"-->
+<!--                                android:minHeight="14dp"-->
+<!--                                android:textColor="@color/text_view_color"-->
+<!--                                android:textSize="18sp"-->
+<!--                                app:layout_constraintEnd_toStartOf="@+id/udpServerSettingsImageButton"-->
+<!--                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"-->
+<!--                                app:layout_constraintTop_toTopOf="parent"-->
+<!--                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"-->
+<!--                                android:importantForAutofill="no" />-->
+
+<!--                        <TextView-->
+<!--                                android:id="@+id/udpServerPortTextView"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="12dp"-->
+<!--                                android:text="@string/udp_server_port"-->
+<!--                                android:textAlignment="textEnd"-->
+<!--                                android:textColor="@color/text_view_color"-->
+<!--                                android:textSize="14sp"-->
+<!--                                app:layout_constraintBottom_toTopOf="@+id/udpQSOServerPortEdit"-->
+<!--                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"-->
+<!--                                app:layout_constraintTop_toBottomOf="@+id/udpServerAddressEdit" />-->
+
+<!--                        <EditText-->
+<!--                                android:id="@+id/udpQSOServerPortEdit"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:background="@drawable/editor_style"-->
+<!--                                android:ems="10"-->
+<!--                                android:inputType="text"-->
+<!--                                android:minHeight="15dp"-->
+<!--                                android:textColor="@color/text_view_color"-->
+
+<!--                                android:textSize="18sp"-->
+<!--                                app:layout_constraintEnd_toEndOf="@+id/udpServerAddressTextEdit"-->
+<!--                                app:layout_constraintStart_toStartOf="@+id/udpServerAddressTextEdit"-->
+<!--                                app:layout_constraintTop_toBottomOf="@+id/udpServerAddressTextEdit"-->
+<!--                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"-->
+<!--                                android:importantForAutofill="no" />-->
 
 
+<!--                        <Switch-->
+<!--                                android:id="@+id/enableUdpServerSwitch"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="4dp"-->
+<!--                                android:checked="false"-->
+<!--                                android:text="@string/config_enable_udp_server"-->
+<!--                                android:textColor="@color/text_view_color"-->
+<!--                                android:textSize="14sp"-->
+<!--                                android:thumbTint="?attr/colorPrimary"-->
+<!--                                android:thumbTintMode="multiply"-->
+<!--                                android:trackTint="@color/button_start_color"-->
+<!--                                app:layout_constraintBottom_toBottomOf="@id/testUdpServerButton"-->
+<!--                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"-->
+<!--                                tools:ignore="TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml"/>-->
+<!--                        <ImageButton-->
+<!--                                android:id="@+id/udpServerSettingsImageButton"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginEnd="8dp"-->
+<!--                                android:background="@drawable/imagebutton_transparent_style"-->
+<!--                                android:contentDescription="@string/help"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent"-->
+<!--                                app:srcCompat="@drawable/ic_baseline_info_32"-->
+<!--                                tools:ignore="TouchTargetSizeCheck" />-->
+
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/udpServerLayout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/editor_layout_style"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/qrzLayout" android:layout_marginBottom="2dp"
+                            app:layout_constraintBottom_toTopOf="@+id/clearCacheLayout">
+
+                        <TextView
+                                android:id="@+id/udpServerSettingsTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/udp_server_settings"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/enableUdpServerSwitch"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+
+                        <TextView
+                                android:id="@+id/udpServerIpTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:text="@string/udp_server_ip"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/udpQSOServerIpEdit"
+                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"
+                                app:layout_constraintTop_toTopOf="@+id/udpQSOServerIpEdit"/>
+
+                        <EditText
+                                android:id="@+id/udpQSOServerIpEdit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/editor_style"
+                                android:ems="10"
+                                android:hint="192.168.1.100"
+                                android:inputType="numberDecimal"
+                                android:digits="0123456789."
+                                android:maxLength="15"
+                                android:minHeight="14dp"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toStartOf="@+id/udpServerSettingsImageButton"
+                                app:layout_constraintStart_toEndOf="@+id/udpServerIpTextView"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                                android:importantForAutofill="no"
+                                app:layout_constraintBottom_toTopOf="@+id/udpQSOServerPortEdit"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginStart="48dp"/>
+
+
+                        <TextView
+                                android:id="@+id/udpServerPortTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/udp_server_port"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="14sp"
+                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"
+                                app:layout_constraintBottom_toBottomOf="@id/udpQSOServerPortEdit"
+                                android:layout_marginStart="12dp"/>
+                        <EditText
+                                android:id="@+id/udpQSOServerPortEdit"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/editor_style"
+                                android:ems="10"
+                                android:inputType="text|textUri"
+
+                                android:minHeight="15dp"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="@+id/udpQSOServerIpEdit"
+                                app:layout_constraintStart_toStartOf="@+id/udpQSOServerIpEdit"
+                                app:layout_constraintTop_toBottomOf="@+id/udpServerIpTextView"
+                                tools:ignore="TextContrastCheck,TooManyViews,TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                                android:importantForAutofill="no"
+                                android:layout_marginBottom="3dp"
+                                app:layout_constraintBottom_toTopOf="@+id/enableUdpServerSwitch"
+                        />
+
+                        <Switch
+                                android:id="@+id/enableUdpServerSwitch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="4dp"
+                                android:checked="false"
+                                android:text="@string/config_enable_udp_server"
+                                android:textColor="@color/text_view_color"
+                                android:textSize="14sp"
+                                android:thumbTint="?attr/colorPrimary"
+                                android:thumbTintMode="multiply"
+                                android:trackTint="@color/button_start_color"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/udpServerSettingsTextView"
+                                app:layout_constraintTop_toBottomOf="@+id/udpQSOServerPortEdit"
+                                tools:ignore="TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml"/>
+
+
+                        <ImageButton
+                                android:id="@+id/udpServerSettingsImageButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/imagebutton_transparent_style"
+                                android:contentDescription="@string/help"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_baseline_info_32"
+                                tools:ignore="TouchTargetSizeCheck"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/operatonBandLayout"
                         android:layout_width="0dp"
@@ -1992,7 +2257,7 @@
                         android:background="@drawable/editor_layout_style"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/qrzLayout">
+                        app:layout_constraintTop_toBottomOf="@+id/udpServerLayout">
 
                         <TextView
                             android:id="@+id/clearCacheText"

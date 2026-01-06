@@ -129,7 +129,9 @@
     <string name="message_count">Messages(%d)</string>
 
     <!--   日志导出栏栏-->
-    <string name="export_info">Please use the web browser of other devices to export from the background under the same LAN as this device.\nEnter the URL in the browser:\nhttp://%s:%d</string>
+    <string name="export_info">Please use the web browser of other devices to export from the background under the same
+        LAN as this device.\nEnter the URL in the browser:\nhttp://%s:%d
+    </string>
     <!--   发射监管-->
     <string name="minutes">%d Mins</string>
 
@@ -194,7 +196,9 @@
     <string name="html_track_operation_information">Monitoring operation information</string>
     <string name="html_track_callsign_hash_table">Monitor callsign hash table</string>
     <string name="html_trace_parsed_messages">Monitor parsed messages</string>
-    <string name="html_trace_callsign_and_grid_correspondence_table">Monitor the correspondence between call sign and grid</string>
+    <string name="html_trace_callsign_and_grid_correspondence_table">Monitor the correspondence between call sign and
+        grid
+    </string>
     <string name="html_query_communication_message">Query QSO</string>
     <string name="html_query_configuration_information">Query configuration information</string>
     <string name="html_query_all_table">Query all data tables</string>
@@ -203,12 +207,19 @@
     <string name="html_show_communication_callsigns">Show QSO callsigns</string>
     <string name="html_export_log">Export log</string>
     <string name="html_import_log">Import log</string>
-    <string name="html_to_the_third_party">Export log (for backup and log uploading to a third-party platform for confirmation)</string>
-    <string name="html_from_jtdx_lotw">Export logs (used for backup, uploading logs to a third-party platform for confirmation, synchronizing JTDX logs and synchronizing LoTW for confirmation. It is recommended to use ADI data of JTDX, LoTW, Log32 and N1mm for synchronization)</string>
+    <string name="html_to_the_third_party">Export log (for backup and log uploading to a third-party platform for
+        confirmation)
+    </string>
+    <string name="html_from_jtdx_lotw">Export logs (used for backup, uploading logs to a third-party platform for
+        confirmation, synchronizing JTDX logs and synchronizing LoTW for confirmation. It is recommended to use ADI data
+        of JTDX, LoTW, Log32 and N1mm for synchronization)
+    </string>
     <string name="html_return">Return</string>
 
 
-    <string name="html_import_count">There are %d records in the ADI file and %d imported records . The format of %d logs is incorrect .</string>
+    <string name="html_import_count">There are %d records in the ADI file and %d imported records . The format of %d
+        logs is incorrect .
+    </string>
     <string name="html_import_failed">Import failed! %s</string>
     <string name="html_illegal_command">Illegal command, upload failed!</string>
     <string name="html_callsign">Callsign</string>
@@ -269,7 +280,8 @@
     <string name="html_hash_value">Hash</string>
     <string name="html_please_select">Please select</string>
     <string name="html_adi_format">Log file in ADI format</string>
-    <string name="html_file_in_other_format">and files in other formats may not be parsed and imported normally.</string>
+    <string name="html_file_in_other_format">and files in other formats may not be parsed and imported normally.
+    </string>
     <string name="html_time">Time</string>
     <string name="html_total">Total</string>
     <string name="html_all_logs">All logs</string>
@@ -279,7 +291,9 @@
     <string name="html_download_unconfirmed">Download unconfirmed</string>
     <string name="callsign_error">Callsign is incorrect !</string>
     <string name="adjust_call_target">Adjust call target : %s</string>
-    <string name="use_wspr2_error">The currently used frequency %s is the frequency used by wspr-2. It is prohibited to transmit FT8 signals!</string>
+    <string name="use_wspr2_error">The currently used frequency %s is the frequency used by wspr-2. It is prohibited to
+        transmit FT8 signals!
+    </string>
     <string name="none">None</string>
     <string name="connect_bluetooth_spp">Connecting Bluetooth serial port %s …</string>
     <string name="bluetooth_is_connected">Bluetooth device %s is connected.</string>
@@ -301,7 +315,7 @@
     <string name="count_lotw_confirmed">LoTW confirmed : %d</string>
     <string name="count_manually_confirmed">Manually confirmed : %d</string>
     <string name="count_confirmed_proportion">Confirmed proportion : %.1f%%</string>
-    <string name="count_tota_callsigns">Total  of callsigns : %d</string>
+    <string name="count_tota_callsigns">Total of callsigns : %d</string>
     <string name="count_zone">Zone %s</string>
     <string name="itu_completion_statistics">ITU completion statistics</string>
     <string name="count_incomplete">Incomplete</string>
@@ -314,7 +328,9 @@
     <string name="dxcc_completion_statistics">DXCC statistics</string>
     <string name="count_total_dxcc">Total DXCC : %d \nCompleted : %d(%.1f%%)</string>
     <string name="count_dxcc_proportion">DXCC statistics</string>
-    <string name="callsign_info">Callsign:%s\nLocation:%s\nCQ zone:%d\nITU zone:%d\nContinent:%s\nLongitude and latitude:%.2f,%.2f\nTime zone:%.0f\nDxcc prefix:%s</string>
+    <string name="callsign_info">Callsign:%s\nLocation:%s\nCQ zone:%d\nITU zone:%d\nContinent:%s\nLongitude and
+        latitude:%.2f,%.2f\nTime zone:%.0f\nDxcc prefix:%s
+    </string>
     <string name="maximum_distance">Maximum distance\n\n%s</string>
     <string name="minimum_distance">Nearest distance\n\n%s</string>
     <string name="count_distance_info">Maximum distance:%.0f km (%s)\nNearest distance:%.0f km (%s)</string>
@@ -334,7 +350,7 @@
     <string name="only_flex_supported">Now only the FlexRadio or ICom series is supported !</string>
     <string name="flex_connect_failed">FlexRadio %s connect failed !</string>
     <string name="xiegu_connect_failed">XieguRadio %s connect failed !</string>
-    <string name="init_flex_operation">%s  is initializing the operation .</string>
+    <string name="init_flex_operation">%s is initializing the operation .</string>
     <string name="html_max_message_cache">Maximum number of cached messages</string>
     <string name="instruction_failed">The instruction %s failed to execute . message : %s</string>
     <string name="instruction_success">The instruction %s was executed successfully .</string>
@@ -479,7 +495,9 @@
     <string name="decode_mode_text">Decode mode</string>
     <string name="fast_mode">Fast decode</string>
     <string name="deep_mode">Deep decode</string>
-    <string name="export_null">Export from WebUI via web browser on another device under the same LAN \n Please connect to a valid Wi-Fi</string>
+    <string name="export_null">Export from WebUI via web browser on another device under the same LAN \n Please connect
+        to a valid Wi-Fi
+    </string>
     <string name="null_task_html">Task not exist!</string>
     <string name="log_importing_html">Importing...</string>
     <string name="log_import_finished_html">Finished !</string>
@@ -507,8 +525,12 @@
     <string name="xiegu_atu_off">ATU Off</string>
     <string name="xiegu_band_str">Band : %s</string>
     <string name="alc_low_alert">Warning ! ALC is too low .</string>
-    <string name="xiegu_meter_info">S.Meter: %.1f dBm\nSWR: %s\nALC: %.1f\nVolt: %.1fV\nTX power: %.1f W\nMax tx power: %.1f\nTX volume:%d%%</string>
-    <string name="serial_connect_no_access">Unable to connect to the serial port, please confirm if you have access to the USB device!</string>
+    <string name="xiegu_meter_info">S.Meter: %.1f dBm\nSWR: %s\nALC: %.1f\nVolt: %.1fV\nTX power: %.1f W\nMax tx power:
+        %.1f\nTX volume:%d%%
+    </string>
+    <string name="serial_connect_no_access">Unable to connect to the serial port, please confirm if you have access to
+        the USB device!
+    </string>
     <string name="serial_connect_failed">Serial port opening failed !</string>
     <string name="serial_no_driver">Unable to connect to serial port, serial port not found!</string>
     <string name="serial_data_bits">Data bit</string>
@@ -547,10 +569,15 @@
     <string name="qrz_api_key">API KEY</string>
     <string name="config_enable_qrz">Enable QRZ sync</string>
     <string name="qrz_help">qrz_en.txt</string>
+    <string name="udp_server_settings" translatable="false">UDP Server</string>
+    <string name="udp_server_ip" translatable="false">IP</string>
+    <string name="udp_server_port" translatable="false">Port</string>
+    <string name="config_enable_udp_server" translatable="false">Enable UDP Server</string>
     <string name="alram_switch">Alarm switch</string>
     <string name="swr_switch_on" translatable="false">SWR On</string>
     <string name="swr_switch_off" translatable="false">SWR Off</string>
     <string name="alc_switch_on" translatable="false">ALC On</string>
     <string name="alc_switch_off" translatable="false">ALC Off</string>
+
 
 </resources>

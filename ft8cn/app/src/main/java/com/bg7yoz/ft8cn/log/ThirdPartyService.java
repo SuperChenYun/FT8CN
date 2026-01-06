@@ -204,6 +204,11 @@ public class ThirdPartyService {
         }
     }
 
+    public static void UploadToUDPQSOServer(QSLRecord qslRecord){
+        // 转换格式推送到UDP QSO Server
+
+    }
+
     public static String sendPostRequest(String url, String json) throws IOException {
         HttpURLConnection conn = null;
         BufferedReader reader = null;

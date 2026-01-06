@@ -471,6 +471,9 @@ public class MainViewModel extends ViewModel {
                         if (GeneralVariables.enableQRZ){
                             ThirdPartyService.UploadToQRZ(qslRecord);
                         }
+                        if (GeneralVariables.enableUDPQSO) {
+                            ThirdPartyService.UploadToUDPQSOServer(qslRecord);
+                        }
                     }
                 }).start();
 

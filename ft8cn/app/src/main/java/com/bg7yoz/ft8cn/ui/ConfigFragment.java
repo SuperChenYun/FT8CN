@@ -220,6 +220,42 @@ public class ConfigFragment extends Fragment {
         }
     };
 
+    private final TextWatcher onUDPQSOServerIpChanged=new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            GeneralVariables.udpQSOServerIp = editable.toString();
+            writeConfig("udpQSOServerIp", GeneralVariables.getUdpQSOServerIp());
+        }
+    };
+
+    private final TextWatcher onUDPQSOServerPortChanged=new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            GeneralVariables.udpQSOServerPort = Integer.parseInt(editable.toString());
+            writeConfig("udpQSOServerPort", Integer.toString(GeneralVariables.getUdpQSOServerPort()));
+        }
+    };
+
     // qrz的api
     private final TextWatcher onQrzApiKeyChanged=new TextWatcher() {
         @Override
@@ -466,6 +502,18 @@ public class ConfigFragment extends Fragment {
         binding.cloudlogStationIdEdit.removeTextChangedListener(onCloudlogStationIDChanged);
         binding.cloudlogStationIdEdit.setText(GeneralVariables.getCloudlogStationID());
         binding.cloudlogStationIdEdit.addTextChangedListener(onCloudlogStationIDChanged);
+
+        binding.cloudlogServerAddressEdit.removeTextChangedListener(onCloudlogAddressChanged);
+        binding.cloudlogServerAddressEdit.setText(GeneralVariables.getCloudlogServerAddress());
+        binding.cloudlogServerAddressEdit.addTextChangedListener(onCloudlogAddressChanged);
+
+        binding.udpQSOServerIpEdit.removeTextChangedListener(onUDPQSOServerIpChanged);
+        binding.udpQSOServerIpEdit.setText(GeneralVariables.getUdpQSOServerIp());
+        binding.udpQSOServerIpEdit.addTextChangedListener(onUDPQSOServerIpChanged);
+
+        binding.udpQSOServerPortEdit.removeTextChangedListener(onUDPQSOServerPortChanged);
+        binding.udpQSOServerPortEdit.setText(Integer.toString(GeneralVariables.getUdpQSOServerPort()));
+        binding.udpQSOServerPortEdit.addTextChangedListener(onUDPQSOServerPortChanged);
 
         // qrz相关配置
         binding.qrzApiKeyTextEdit.removeTextChangedListener(onQrzApiKeyChanged);
@@ -1193,7 +1241,6 @@ public class ConfigFragment extends Fragment {
         binding.msgStandardRadioButton.setOnClickListener(listener);
         binding.msgSimpleRadioButton.setOnClickListener(listener);
     }
-
 
 
 
