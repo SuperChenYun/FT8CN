@@ -1,8 +1,11 @@
 package com.bg7yoz.ft8cn.log;
+
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.bg7yoz.ft8cn.GeneralVariables;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 import org.xmlpull.v1.XmlPullParser;
@@ -16,8 +19,13 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.net.DatagramSocket;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.text.SimpleDateFormat;
 
-enum ServiceType{
+
+enum ServiceType {
     Cloudlog,
     QRZ
 }
@@ -25,7 +33,7 @@ enum ServiceType{
 public class ThirdPartyService {
     public static String TAG = "ThirdPartyService";
 
-    private static String QSLRecordToADIF(QSLRecord qslRecord, ServiceType serv){
+    private static String QSLRecordToADIF(QSLRecord qslRecord, ServiceType serv) {
         StringBuilder logStr = new StringBuilder();
         logStr.append(String.format("<call:%d>%s "
                 , qslRecord.getToCallsign().length()
@@ -86,9 +94,9 @@ public class ThirdPartyService {
 
         if (String.valueOf(qslRecord.getBandFreq()) != null) {
             String freq = "";
-            Log.d(TAG,String.valueOf(qslRecord.getBandFreq()));
-            if (serv == ServiceType.Cloudlog || serv == ServiceType.QRZ){
-                double i = (double)qslRecord.getBandFreq() / 1000000;
+            Log.d(TAG, String.valueOf(qslRecord.getBandFreq()));
+            if (serv == ServiceType.Cloudlog || serv == ServiceType.QRZ) {
+                double i = (double) qslRecord.getBandFreq() / 1000000;
                 freq = String.valueOf(i);
             }
 
@@ -118,95 +126,140 @@ public class ThirdPartyService {
                 , comment));
         return logStr.toString();
     }
-    public static void UploadToCloudLog(QSLRecord qslRecord){
+
+    public static void UploadToCloudLog(QSLRecord qslRecord) {
         // 转换为adif格式
-        String logStr = QSLRecordToADIF(qslRecord,ServiceType.Cloudlog);
-        Log.d(TAG,logStr);
+        String logStr = QSLRecordToADIF(qslRecord, ServiceType.Cloudlog);
+        Log.d(TAG, logStr);
         String address = GeneralVariables.getCloudlogServerAddress();
-        if (!address.endsWith("/")){
-            address+="/";
+        if (!address.endsWith("/")) {
+            address += "/";
         }
-        HashMap<String,String> json = new HashMap<>();
+        HashMap<String, String> json = new HashMap<>();
         json.put("key", GeneralVariables.getCloudlogServerApiKey());
         json.put("station_profile_id", GeneralVariables.getCloudlogStationID());
-        json.put("type","adif");
+        json.put("type", "adif");
         json.put("string", logStr);
 
         JSONStringer js = new JSONStringer();
         try {
             String result = js.object().key("key").value(GeneralVariables.getCloudlogServerApiKey()).key("station_profile_id").value(GeneralVariables.getCloudlogStationID())
                     .key("type").value("adif").key("string").value(logStr).endObject().toString();
-            String clRes = sendPostRequest(address+"api/qso/",result);
-            Log.d(TAG,"Updated to Cloudlog successfully. result:"+clRes);
-        }catch (Exception k){
+            String clRes = sendPostRequest(address + "api/qso/", result);
+            Log.d(TAG, "Updated to Cloudlog successfully. result:" + clRes);
+        } catch (Exception k) {
             Log.d(TAG, k.toString());
         }
     }
-    public static boolean CheckCloudlogConnection(){
+
+    public static boolean CheckCloudlogConnection() {
         String address = GeneralVariables.getCloudlogServerAddress();
         String apiKey = GeneralVariables.getCloudlogServerApiKey();
         // 检查地址末尾是否含有 /
-        if (!address.endsWith("/")){
-            address+="/";
+        if (!address.endsWith("/")) {
+            address += "/";
         }
-        try{
-            String url = address + "api/auth/"+ apiKey;
-            Log.d(TAG, "URL: "+url);
+        try {
+            String url = address + "api/auth/" + apiKey;
+            Log.d(TAG, "URL: " + url);
             String result = sendGetRequest(url);
             Log.d(TAG, result);
-            if (!result.equals("<auth><status>Valid</status><rights>rw</rights></auth>")){
+            if (!result.equals("<auth><status>Valid</status><rights>rw</rights></auth>")) {
                 return false;
             }
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, e.toString());
             return false;
         }
     }
 
-    public static boolean CheckQRZConnection(){
+    public static boolean CheckQRZConnection() {
         String apiKey = GeneralVariables.getQrzApiKey();
-        try{
-            String url = "https://logbook.qrz.com/api?KEY="+apiKey+"&ACTION=STATUS";
+        try {
+            String url = "https://logbook.qrz.com/api?KEY=" + apiKey + "&ACTION=STATUS";
             String result = sendGetRequest(url);
-            HashMap<String,String> status = new HashMap<>();
+            HashMap<String, String> status = new HashMap<>();
             for (String s : result.split("&")) {
                 String[] split = s.split("=");
-                if (split.length>1){
-                    status.put(split[0],split[1]);
+                if (split.length > 1) {
+                    status.put(split[0], split[1]);
                 }
             }
             Log.d(TAG, status.toString());
-            if (!status.get("RESULT").equals("OK")){
+            if (!status.get("RESULT").equals("OK")) {
                 return false;
             }
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, e.toString());
             return false;
         }
     }
 
-    public static void UploadToQRZ(QSLRecord qslRecord){
+    public static void UploadToQRZ(QSLRecord qslRecord) {
         // 转换为adif格式
         String logStr = QSLRecordToADIF(qslRecord, ServiceType.QRZ);
-        Log.d(TAG,logStr);
+        Log.d(TAG, logStr);
         String apikey = GeneralVariables.getQrzApiKey();
-        HashMap<String,String> json = new HashMap<>();
+        HashMap<String, String> json = new HashMap<>();
 
-        String url = String.format("https://logbook.qrz.com/api/KEY=%s&ACTION=INSERT&ADIF=%s",apikey,logStr);
+        String url = String.format("https://logbook.qrz.com/api/KEY=%s&ACTION=INSERT&ADIF=%s", apikey, logStr);
 
         try {
             String result = sendGetRequest(url);
-            Log.d(TAG,"Updated to QRZ successfully. result:" + result);
-        }catch (Exception k){
+            Log.d(TAG, "Updated to QRZ successfully. result:" + result);
+        } catch (Exception k) {
             Log.d(TAG, k.toString());
         }
     }
 
-    public static void UploadToUDPQSOServer(QSLRecord qslRecord){
+    public static void UploadToUDPQSOServer(QSLRecord qslRecord) {
         // 转换格式推送到UDP QSO Server
+        // 检查是否启用UDP QSO Server
+        if (!GeneralVariables.enableUDPQSO) {
+            return;
+        }
 
+        try {
+            // 转换QSO信息为标准格式
+            StringBuilder qsoInfo = getUDPQsoInfo(qslRecord);
+
+            // 发送UDP数据包
+            DatagramSocket socket = new DatagramSocket();
+            InetAddress address = InetAddress.getByName(GeneralVariables.udpQSOServerIp); // 假设在GeneralVariables中有UDP服务器IP配置
+            byte[] buffer = qsoInfo.toString().getBytes();
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, GeneralVariables.udpQSOServerPort); // 假设在GeneralVariables中有UDP服务器端口配置
+            socket.send(packet);
+            socket.close();
+
+            Log.d(TAG, "QSO information sent to UDP server successfully: " + qsoInfo);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to send QSO information to UDP server: " + e.getMessage());
+        }
+
+    }
+
+    @NotNull
+    private static StringBuilder getUDPQsoInfo(QSLRecord qslRecord) {
+        StringBuilder qsoInfo = new StringBuilder();
+        qsoInfo.append("CALL:").append(qslRecord.getMyCallsign()).append(",");
+        qsoInfo.append("HIS_CALL:").append(qslRecord.getToCallsign()).append(",");
+        qsoInfo.append("FREQ:").append(qslRecord.getWavFrequency()).append(",");
+        qsoInfo.append("MODE:").append(qslRecord.getMode()).append(",");
+        qsoInfo.append("RST:").append(qslRecord.getReceivedReport()).append(",");
+        qsoInfo.append("SENT_RST:").append(qslRecord.getSendReport()).append(",");
+        qsoInfo.append("RCVD_RST:").append(qslRecord.getReceivedReport()).append(",");
+        // qsoInfo.append("QSO_NR:").append("").append(",");
+        qsoInfo.append("BAND:").append(qslRecord.getBandLength()).append(",");
+        qsoInfo.append("MY_GRID:").append(qslRecord.getMyMaidenGrid()).append(",");
+        qsoInfo.append("HIS_GRID:").append(qslRecord.getToMaidenGrid()).append(",");
+        qsoInfo.append("TX_FREQ:").append(qslRecord.getBandFreq()).append(",");
+        qsoInfo.append("RX_FREQ:").append(qslRecord.getBandFreq()).append(",");
+        // 格式化时间为yyyy-MM-dd HH:mm:ss
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        qsoInfo.append("TIME:").append(sdf.format(qslRecord.getQso_date()));
+        return qsoInfo;
     }
 
     public static String sendPostRequest(String url, String json) throws IOException {
@@ -230,7 +283,7 @@ public class ThirdPartyService {
             // 获取服务器的响应结果
             int responseCode = conn.getResponseCode();
             // cloudlog使用HTTP_CREATED作为创建记录成功的响应
-            if (responseCode == HttpURLConnection.HTTP_OK || responseCode==HttpURLConnection.HTTP_CREATED) {
+            if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED) {
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder response = new StringBuilder();
                 String line;
@@ -250,6 +303,7 @@ public class ThirdPartyService {
 
         return null;
     }
+
     public static String sendGetRequest(String url) throws IOException {
         HttpURLConnection conn = null;
         BufferedReader reader = null;
