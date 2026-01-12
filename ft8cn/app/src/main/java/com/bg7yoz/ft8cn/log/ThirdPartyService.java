@@ -223,44 +223,23 @@ public class ThirdPartyService {
 
         try {
             // 转换QSO信息为标准格式
-            StringBuilder qsoInfo = getUDPQsoInfo(qslRecord);
-
+            String logStr = QSLRecordToADIF(qslRecord, ServiceType.QRZ);
+            Log.d(TAG, logStr);
             // 发送UDP数据包
             DatagramSocket socket = new DatagramSocket();
             InetAddress address = InetAddress.getByName(GeneralVariables.udpQSOServerIp); // 假设在GeneralVariables中有UDP服务器IP配置
-            byte[] buffer = qsoInfo.toString().getBytes();
+            byte[] buffer = logStr.getBytes();
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, GeneralVariables.udpQSOServerPort); // 假设在GeneralVariables中有UDP服务器端口配置
             socket.send(packet);
             socket.close();
 
-            Log.d(TAG, "QSO information sent to UDP server successfully: " + qsoInfo);
+            Log.d(TAG, "QSO information sent to UDP server successfully: " + logStr);
         } catch (Exception e) {
             Log.e(TAG, "Failed to send QSO information to UDP server: " + e.getMessage());
         }
 
     }
 
-    @NotNull
-    private static StringBuilder getUDPQsoInfo(QSLRecord qslRecord) {
-        StringBuilder qsoInfo = new StringBuilder();
-        qsoInfo.append("CALL:").append(qslRecord.getMyCallsign()).append(",");
-        qsoInfo.append("HIS_CALL:").append(qslRecord.getToCallsign()).append(",");
-        qsoInfo.append("FREQ:").append(qslRecord.getWavFrequency()).append(",");
-        qsoInfo.append("MODE:").append(qslRecord.getMode()).append(",");
-        qsoInfo.append("RST:").append(qslRecord.getReceivedReport()).append(",");
-        qsoInfo.append("SENT_RST:").append(qslRecord.getSendReport()).append(",");
-        qsoInfo.append("RCVD_RST:").append(qslRecord.getReceivedReport()).append(",");
-        // qsoInfo.append("QSO_NR:").append("").append(",");
-        qsoInfo.append("BAND:").append(qslRecord.getBandLength()).append(",");
-        qsoInfo.append("MY_GRID:").append(qslRecord.getMyMaidenGrid()).append(",");
-        qsoInfo.append("HIS_GRID:").append(qslRecord.getToMaidenGrid()).append(",");
-        qsoInfo.append("TX_FREQ:").append(qslRecord.getBandFreq()).append(",");
-        qsoInfo.append("RX_FREQ:").append(qslRecord.getBandFreq()).append(",");
-        // 格式化时间为yyyy-MM-dd HH:mm:ss
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        qsoInfo.append("TIME:").append(sdf.format(qslRecord.getQso_date()));
-        return qsoInfo;
-    }
 
     public static String sendPostRequest(String url, String json) throws IOException {
         HttpURLConnection conn = null;
