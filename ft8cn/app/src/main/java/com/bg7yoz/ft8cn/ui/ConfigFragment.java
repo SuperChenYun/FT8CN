@@ -474,8 +474,6 @@ public class ConfigFragment extends Fragment {
         binding.inputFreqEditor.setText(GeneralVariables.getBaseFrequencyStr());
         binding.inputFreqEditor.addTextChangedListener(onFreqEditorChanged);
 
-
-
         //CIV地址
         binding.civAddressEdit.removeTextChangedListener(onCIVAddressEditorChanged);
         binding.civAddressEdit.setText(GeneralVariables.getCivAddressStr());
@@ -503,9 +501,9 @@ public class ConfigFragment extends Fragment {
         binding.cloudlogStationIdEdit.setText(GeneralVariables.getCloudlogStationID());
         binding.cloudlogStationIdEdit.addTextChangedListener(onCloudlogStationIDChanged);
 
-        binding.cloudlogServerAddressEdit.removeTextChangedListener(onCloudlogAddressChanged);
-        binding.cloudlogServerAddressEdit.setText(GeneralVariables.getCloudlogServerAddress());
-        binding.cloudlogServerAddressEdit.addTextChangedListener(onCloudlogAddressChanged);
+        // binding.cloudlogServerAddressEdit.removeTextChangedListener(onCloudlogAddressChanged);
+        // binding.cloudlogServerAddressEdit.setText(GeneralVariables.getCloudlogServerAddress());
+        // binding.cloudlogServerAddressEdit.addTextChangedListener(onCloudlogAddressChanged);
 
         binding.udpQSOServerIpEdit.removeTextChangedListener(onUDPQSOServerIpChanged);
         binding.udpQSOServerIpEdit.setText(GeneralVariables.getUdpQSOServerIp());
@@ -707,6 +705,26 @@ public class ConfigFragment extends Fragment {
             }
         });
 
+        //设置保存UPDServer选项
+        binding.enableUDPQSOSwitch.setOnCheckedChangeListener(null);
+        binding.enableUDPQSOSwitch.setChecked(GeneralVariables.enableUDPQSO);
+        binding.enableUDPQSOSwitch.setText(GeneralVariables.getStringFromResource(
+                R.string.config_enable_cloudlog)
+                +(GeneralVariables.enableUDPQSO?"(On)":"(Off)"));
+        binding.enableUDPQSOSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                GeneralVariables.enableUDPQSO = binding.enableUDPQSOSwitch.isChecked();
+                if (binding.enableUDPQSOSwitch.isChecked()) {
+                    mainViewModel.databaseOpr.writeConfig("enableUDPQSO", "1", null);
+                } else {
+                    mainViewModel.databaseOpr.writeConfig("enableUDPQSO", "0", null);
+                }
+                binding.enableUDPQSOSwitch.setText(GeneralVariables.getStringFromResource(
+                        R.string.config_enable_cloudlog)
+                        +(GeneralVariables.enableUDPQSO?"(On)":"(Off)"));
+            }
+        });
 
         //获取梅登海德网格
         binding.configGetGridImageButton.setOnClickListener(new View.OnClickListener() {
