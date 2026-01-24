@@ -709,7 +709,7 @@ public class ConfigFragment extends Fragment {
         binding.enableUDPQSOSwitch.setOnCheckedChangeListener(null);
         binding.enableUDPQSOSwitch.setChecked(GeneralVariables.enableUDPQSO);
         binding.enableUDPQSOSwitch.setText(GeneralVariables.getStringFromResource(
-                R.string.config_enable_cloudlog)
+                R.string.config_enable_udp_server)
                 +(GeneralVariables.enableUDPQSO?"(On)":"(Off)"));
         binding.enableUDPQSOSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -721,7 +721,7 @@ public class ConfigFragment extends Fragment {
                     mainViewModel.databaseOpr.writeConfig("enableUDPQSO", "0", null);
                 }
                 binding.enableUDPQSOSwitch.setText(GeneralVariables.getStringFromResource(
-                        R.string.config_enable_cloudlog)
+                        R.string.config_enable_udp_server)
                         +(GeneralVariables.enableUDPQSO?"(On)":"(Off)"));
             }
         });

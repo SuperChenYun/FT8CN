@@ -866,7 +866,7 @@
                         />
 
                         <Switch
-                                android:id="@+id/enableUdpServerSwitch"
+                                android:id="@+id/enableUDPQSOSwitch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
